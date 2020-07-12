@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_medium_2"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivCountry"
+        android:layout_width="166dp"
+        android:layout_height="230dp"
+        android:src="@drawable/seaflower"
+        android:scaleType="fitXY" />
+
+
+
+    <TextView
+        android:id="@+id/tvNewOrSale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New"
+        android:padding="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginLeft="@dimen/margin_medium_2"
+        android:background="#99B0B0B0"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/tvCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thailand"
+        android:textSize="@dimen/text_regular_3x"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_above="@id/tvToursCount"
+        android:layout_alignLeft="@id/tvNewOrSale"
+        android:layout_marginBottom="@dimen/margin_medium_2"
+        />
+
+    <TextView
+        android:id="@+id/tvToursCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18 Tours"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_alignLeft="@id/tvNewOrSale"
+        android:layout_alignBottom="@id/ivCountry"
+        android:layout_marginBottom="@dimen/margin_medium_2"
+        />
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="4.5"
+        android:background="#99B0B0B0"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_alignBottom="@id/tvToursCount"
+        android:layout_alignRight="@id/ivCountry"
+        android:layout_alignTop="@id/tvCountry"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium_2"
+        android:drawableBottom="@drawable/ic_star_white"
+        />
+
+
+</RelativeLayout>

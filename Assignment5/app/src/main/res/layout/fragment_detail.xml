@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.DetailFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@color/colorPrimaryDark"
+            app:scrimAnimationDuration="1000">
+
+            <ImageView
+                android:id="@+id/ivTourImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/seaflower"
+                android:scaleType="fitXY"/>
+            <ImageButton
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_arrow"
+                android:background="#00FFFFFF"
+                android:padding="@dimen/margin_medium_2"
+                android:layout_gravity="start"
+                android:contentDescription="Back"
+                />
+
+            <ImageView
+                android:id="@+id/ivFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_favorite_border_white_24dp"
+                android:padding="@dimen/margin_medium_2"
+                android:layout_gravity="end"
+                />
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share_white_24dp"
+                android:padding="@dimen/margin_medium_2"
+                android:layout_gravity="end"
+                android:layout_marginRight="40dp"
+                />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/margin_xlarge">
+
+                <TextView
+                    android:id="@+id/tvTourName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sea Flower Resort"
+                    android:textSize="@dimen/text_heading_2x"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/margin_medium_3"
+                    android:layout_marginBottom="@dimen/margin_medium"/>
+                <ImageView
+                    android:id="@+id/ivLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_location_white_16dp"
+                    android:layout_below="@id/tvTourName"
+                    android:layout_alignLeft="@id/tvTourName"/>
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Koh Chang Tai, Thailand"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_below="@id/tvTourName"
+                    android:layout_toRightOf="@id/ivLocation"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_medium"/>
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="2.1"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_below="@id/tvLocation"
+                    android:layout_alignLeft="@id/tvTourName"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    />
+
+                <TextView
+                    android:id="@+id/tvRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.1"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_below="@id/tvLocation"
+                    android:layout_toRightOf="@id/ratingBar" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large">
+
+                <TextView
+                    android:id="@+id/tvWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Free Wi-Fi"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_wifi_black_32dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvSandBeach"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sand Beach"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_sand_beach"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvFirstCoastline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="First Coastline"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_coastline"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvBarNRes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bar and Restaurant"
+                    android:padding="@dimen/margin_medium"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_food_res"
+                    android:textAlignment="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutRecord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/layoutService"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:weightSum="2">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_medium_2">
+                        <ImageView
+                            android:id="@+id/ivBooking"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_booking"/>
+                        <TextView
+                            android:id="@+id/tvBooking"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Booking"
+                            android:textSize="@dimen/text_regular_2x"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/ivBooking"
+                            android:layout_marginLeft="@dimen/margin_medium"/>
+                        <TextView
+                            android:id="@+id/tvBookingRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8.0/10"
+                            android:layout_below="@id/tvBooking"
+                            android:layout_alignLeft="@id/tvBooking"
+                            android:layout_marginTop="@dimen/margin_small"/>
+                        <TextView
+                            android:id="@+id/tvBookingReviews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Based on 30 reviews"
+                            android:layout_below="@id/ivBooking"
+                            android:layout_alignLeft="@id/ivBooking"
+                            android:layout_marginTop="@dimen/margin_medium"/>
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_medium_2">
+                        <ImageView
+                            android:id="@+id/ivHotelOut"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_hotel_out"/>
+                        <TextView
+                            android:id="@+id/tvHotelOut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hotel Out"
+                            android:textSize="@dimen/text_regular_2x"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/ivHotelOut"
+                            android:layout_marginLeft="@dimen/margin_medium"/>
+                        <TextView
+                            android:id="@+id/tvHotelRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8.0/10"
+                            android:layout_below="@id/tvHotelOut"
+                            android:layout_alignLeft="@id/tvHotelOut"
+                            android:layout_marginTop="@dimen/margin_small"/>
+                        <TextView
+                            android:id="@+id/tvHotelReviews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Based on 30 reviews"
+                            android:layout_below="@id/ivHotelOut"
+                            android:layout_alignLeft="@id/ivHotelOut"
+                            android:layout_marginTop="@dimen/margin_medium"/>
+
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_tour_descriptiong"
+                android:textSize="@dimen/text_regular_2x"
+                android:lineSpacingMultiplier="1.1"
+                android:layout_below="@id/layoutRecord"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTourImages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDescription"
+                android:layout_marginTop="@dimen/margin_medium_2"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

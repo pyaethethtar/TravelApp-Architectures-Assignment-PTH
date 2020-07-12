@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MainFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/margin_medium_3">
+
+        <ImageView
+            android:id="@+id/btnNavigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_menu_black_24dp"
+            android:layout_marginLeft="@dimen/margin_medium_3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_title"
+            android:textSize="@dimen/text_regular_3x"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/app_logo"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find the best tour"
+            android:textSize="@dimen/text_heading_2x"
+            android:textStyle="bold"
+            android:layout_below="@+id/btnNavigation"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_alignLeft="@id/btnNavigation"/>
+
+        <TextView
+            android:id="@+id/tvCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country"
+            android:textSize="@dimen/text_regular_3x"
+            android:textStyle="bold"
+            android:layout_below="@+id/tvTitle"
+            android:layout_alignLeft="@id/btnNavigation"
+            android:layout_marginTop="@dimen/margin_medium_2"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCountry"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            />
+
+        <TextView
+            android:id="@+id/tvPopularTours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popular tours"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_regular_3x"
+            android:layout_below="@+id/rvCountry"
+            android:layout_alignLeft="@id/btnNavigation"
+            android:layout_marginTop="@dimen/margin_medium_3"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPopularTours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPopularTours"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginRight="@dimen/margin_medium_3"
+            android:layout_alignLeft="@id/btnNavigation"/>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
