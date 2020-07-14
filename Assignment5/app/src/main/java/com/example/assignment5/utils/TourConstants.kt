@@ -1,6 +1,6 @@
 package com.example.assignment5.utils
 
-const val BASE_URL="https://3a7720f5-1a8f-49b0-844f-55a75d104e25.mock.pstmn.io/"
+const val BASE_URL=" https://e41870d9-1ddb-4b46-a732-5448862e8f2f.mock.pstmn.io/"
 const val GET_TOURS="getAllTours"
 const val GET_COUNTRIES="getAllCountries"
 

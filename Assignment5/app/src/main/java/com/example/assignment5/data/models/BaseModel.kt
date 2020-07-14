@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit
 abstract class BaseModel {
 
     protected var mTourApi : TourAPI
+    lateinit var mTheDB: TourDB
 
     init {
         val mOkHttpClient= OkHttpClient.Builder()
@@ -29,6 +30,10 @@ abstract class BaseModel {
             .build()
 
         mTourApi =retrofit.create(TourAPI::class.java)
+    }
+
+    fun initDatabase(context: Context){
+        mTheDB= TourDB.getDBInstance(context)
     }
 
 }

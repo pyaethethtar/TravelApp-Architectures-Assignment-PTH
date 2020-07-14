@@ -6,27 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 
 import com.example.assignment5.R
 import com.example.assignment5.adapters.TourImagesAdapter
-import com.example.assignment5.data.models.TourModel
-import com.example.assignment5.data.models.TourModelImpl
 import com.example.assignment5.data.vos.CountryVO
 import com.example.assignment5.data.vos.TourVO
+import com.example.assignment5.mvp.presenters.DetailsPresenter
+import com.example.assignment5.mvp.presenters.DetailsPresenterImpl
+import com.example.assignment5.mvp.views.DetailsView
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class DetailFragment(name: String) : Fragment() {
+class DetailFragment(name: String) : Fragment() , DetailsView{
 
-    lateinit var mTourModel: TourModel
+
+    private lateinit var mPresenter: DetailsPresenter
     lateinit var mView: View
     lateinit var mAdapter: TourImagesAdapter
-    var mName: String=name
+    val mName:String = name
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,21 +42,16 @@ class DetailFragment(name: String) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mView=view
+
+        setUpPresenter()
         setUpRecyclerView()
+        mPresenter.onTourDetailsUiReady(this, mName)
 
+    }
 
-        mTourModel=TourModelImpl(view.context)
-
-        mTourModel.getAllToursByName(mName).observe(this, Observer {
-            if (it!=null){ bindTourData(it) }
-            })
-
-        mTourModel.getAllCountryByName(mName)?.observe(this, Observer{
-            if (it!=null){
-                bindCountryData(it)
-            }
-        })
-
+    private fun setUpPresenter(){
+        mPresenter=ViewModelProviders.of(this).get(DetailsPresenterImpl::class.java)
+        mPresenter.initPresenter(this)
     }
 
     private fun setUpRecyclerView(){
@@ -65,47 +62,46 @@ class DetailFragment(name: String) : Fragment() {
         rvTourImages.adapter=mAdapter
     }
 
-    private fun bindTourData(data: TourVO){
+    override fun displayTourDetails(tour: TourVO) {
+        Glide.with(mView.context).load(tour.photos[0]).into(ivTourImage)
+        tvTourName.text=tour.name
+        tvLocation.text=tour.location
+        ratingBar.rating=tour.averageRating.toFloat()
+        tvRating.text=tour.averageRating.toString()
 
-        Glide.with(mView.context).load(data.photos[0]).into(ivTourImage)
-        tvTourName.text=data.name
-        tvLocation.text=data.location
-        ratingBar.rating=data.averageRating.toFloat()
-        tvRating.text=data.averageRating.toString()
+        tvBooking.text=tour.scoresAndReviews[0].name
+        tvBookingRating.text=tour.scoresAndReviews[0].score.toString()+"/"+tour.scoresAndReviews[0].maxScore.toString()
+        tvBookingReviews.text="Based on ${tour.scoresAndReviews[0].totalReviews.toString()} reviews"
 
-        tvBooking.text=data.scoresAndReviews[0].name
-        tvBookingRating.text=data.scoresAndReviews[0].score.toString()+"/"+data.scoresAndReviews[0].maxScore.toString()
-        tvBookingReviews.text="Based on ${data.scoresAndReviews[0].totalReviews.toString()} reviews"
+        tvHotelOut.text=tour.scoresAndReviews[1].name
+        tvHotelRating.text=tour.scoresAndReviews[1].score.toString()+"/"+tour.scoresAndReviews[0].maxScore.toString()
+        tvHotelReviews.text="Based on ${tour.scoresAndReviews[1].totalReviews.toString()} reviews"
 
-        tvHotelOut.text=data.scoresAndReviews[1].name
-        tvHotelRating.text=data.scoresAndReviews[1].score.toString()+"/"+data.scoresAndReviews[0].maxScore.toString()
-        tvHotelReviews.text="Based on ${data.scoresAndReviews[1].totalReviews.toString()} reviews"
+        tvDescription.text=tour.description
 
-        tvDescription.text=data.description
-
-        mAdapter.setTourImages(data.photos)
+        mAdapter.setTourImages(tour.photos)
     }
 
-    private fun bindCountryData(data: CountryVO){
+    override fun displayCountryDetails(country: CountryVO) {
+        Glide.with(mView.context).load(country.photos[0]).into(ivTourImage)
+        tvTourName.text=country.name
+        tvLocation.text=country.location
+        ratingBar.rating=country.averageRating.toFloat()
+        tvRating.text=country.averageRating.toString()
 
-        Glide.with(mView.context).load(data.photos[0]).into(ivTourImage)
-        tvTourName.text=data.name
-        tvLocation.text=data.location
-        ratingBar.rating=data.averageRating.toFloat()
-        tvRating.text=data.averageRating.toString()
+        tvBooking.text=country.scoresAndReviews[0].name
+        tvBookingRating.text=country.scoresAndReviews[0].score.toString()+"/"+country.scoresAndReviews[0].maxScore.toString()
+        tvBookingReviews.text="Based on ${country.scoresAndReviews[0].totalReviews.toString()} reviews"
 
-        tvBooking.text=data.scoresAndReviews[0].name
-        tvBookingRating.text=data.scoresAndReviews[0].score.toString()+"/"+data.scoresAndReviews[0].maxScore.toString()
-        tvBookingReviews.text="Based on ${data.scoresAndReviews[0].totalReviews.toString()} reviews"
+        tvHotelOut.text=country.scoresAndReviews[1].name
+        tvHotelRating.text=country.scoresAndReviews[1].score.toString()+"/"+country.scoresAndReviews[0].maxScore.toString()
+        tvHotelReviews.text="Based on ${country.scoresAndReviews[1].totalReviews.toString()} reviews"
 
-        tvHotelOut.text=data.scoresAndReviews[1].name
-        tvHotelRating.text=data.scoresAndReviews[1].score.toString()+"/"+data.scoresAndReviews[0].maxScore.toString()
-        tvHotelReviews.text="Based on ${data.scoresAndReviews[1].totalReviews.toString()} reviews"
+        tvDescription.text=country.description
 
-        tvDescription.text=data.description
-
-        mAdapter.setTourImages(data.photos)
+        mAdapter.setTourImages(country.photos)
     }
+
 
 
 }

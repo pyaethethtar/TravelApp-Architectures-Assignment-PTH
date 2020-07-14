@@ -11,7 +11,7 @@ interface TourModel {
     fun getAllTours(onError:(String)-> Unit): LiveData<List<TourVO>>
     fun getAllCountries(onError:(String)-> Unit): LiveData<List<CountryVO>>
 
-    fun getToursAndCountries(): Observable<MainVO>
+    //fun getToursAndCountries(): Observable<MainVO>
 
     fun getAllToursByName(name: String): LiveData<TourVO>
 
